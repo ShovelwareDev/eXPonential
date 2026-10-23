@@ -1,0 +1,10 @@
+# Build directories
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio / IDE files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates

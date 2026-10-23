@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <OutputType>Library</OutputType>
+    <AssemblyName>shovelwaredev-eXPonential</AssemblyName>
+    <RootNamespace>Shovelwaredev.eXPonential</RootNamespace>
+    
+    <!-- Point this to your actual SPT server root directory -->
+    <SptServerDir>/media/storage/VScode/SPTMod</SptServerDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SPTarkov.Common" Version="4.1.2" />
+    <PackageReference Include="SPTarkov.DI" Version="4.1.2" />
+    <PackageReference Include="SPTarkov.Server.Core" Version="4.1.2" />
+  </ItemGroup>
+
+  <!-- Automated Deployment Target (Deploys to user/mods/com.shovelwaredev.exponential/) -->
+  <Target Name="DeployMod" AfterTargets="Build" Condition="'$(SptServerDir)' != ''">
+    <ItemGroup>
+      <ModFiles Include="$(TargetDir)**\*.*" />
+      <ConfigJson Include="$(MSBuildProjectDirectory)/config.json" Condition="Exists('$(MSBuildProjectDirectory)/config.json')" />
+    </ItemGroup>
+    
+    <!-- Copy compiled binaries -->
+    <Copy SourceFiles="@(ModFiles)" DestinationFolder="$(SptServerDir)/user/mods/com.shovelwaredev.exponential/%(RecursiveDir)" />
+    
+    <!-- Copy config.json automatically -->
+    <Copy SourceFiles="@(ConfigJson)" DestinationFolder="$(SptServerDir)/user/mods/com.shovelwaredev.exponential/" />
+  </Target>
+
+</Project>
