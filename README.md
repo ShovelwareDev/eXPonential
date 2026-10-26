@@ -2,13 +2,13 @@
 
 A simple XP multiplier mod for SPT.
 
-eXPonential lets you increase the amount of XP you earn in SPT, making progression faster and cutting down on the grind.
+eXPonential lets you increase (or decrease) the amount of XP you earn in SPT, making progression as fast or slow as you want it to be.
 
 ## Features
 
 - Configurable XP multiplier
-- Multiplies quest XP rewards
-- Adjusts XP from kills, healing, interactions, and raid results
+- Multiplies quest XP rewards 
+- Several in-raid XP sources (non-exhaustive)
 - Automatically reloads the config when changes are made
 
 ## Installation
@@ -18,9 +18,11 @@ eXPonential lets you increase the amount of XP you earn in SPT, making progressi
 3. Open `config.json` , and change the multiplier to your desired value:
 ```
 {
-  "Multiplier": 2
+  "Multiplier": 2.0
 }
 ```
+
+**Tested multiplier range is from 0.01 - 50  
 ## Compatibility
 
 - SPT 4.1.6
